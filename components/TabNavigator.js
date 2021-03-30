@@ -15,7 +15,7 @@ const TabNavigator=()=>{
                 iconName = focused ? 'home' : 'home';
             }
             else if(route.name === "Appointments"){
-              iconName= focused ? 'list' : 'list';
+              iconName= focused ? 'time' : 'time';
             }
             else if(route.name === "Patients"){
                 iconName= focused ? 'people' : 'people'

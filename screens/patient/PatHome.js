@@ -6,6 +6,7 @@ import {LinearGradient} from "expo-linear-gradient"
 import WavyHeader from "../../components/WavyHeader"
 import { WebView } from 'react-native-webview'; 
 import firebase from "../../firebase"
+import { Button } from 'react-native';
 
 export default class PatHome extends React.Component{
     constructor(props){
@@ -27,13 +28,21 @@ export default class PatHome extends React.Component{
             }
         })
     }
+
+    addDoctor(){
+      firebase.firestore().collection("Doctors").doc("doc1@gmail.com").collection("Patients").doc(this.state.cred.email).set({
+        name:this.state.cred.name
+      })
+    }
+    
     render(){
      
         return(
           <View style={styles.container}>
           <WavyHeader  customColor='lightblue'  customStyles={styles.svgCurve} />
            <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Welcome, {this.state.cred.name}.</Text>
+        <Button title="add doctor" color="green" onPress={()=>{this.addDoctor}}/>
+
           </View>
             
             </View>

@@ -1,24 +1,27 @@
-import React from 'react';
-import MapPicker from "react-native-map-picker";
-import {View} from "react-native";
- 
+import * as React from 'react';
+
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
  
 export default class LocationPicker extends React.Component {
-  state = {
- 
-  };
+
  
   render() {
     return(
-      <View style={{flex: 1}}>
-        <MapPicker
-          initialCoordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-          }}
-          onLocationSelect={({latitude, longitude})=>console.log(longitude)}
-        />
+      <View style={styles.container}>
+        <Text>Hello</Text>
       </View>
     );
   }
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+});

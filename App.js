@@ -40,7 +40,7 @@ function MyStack(){
           <Stack.Screen
        name="Login"
   
-       component={LocationPicker}
+       component={Login}
        options={{title:'Login'}}/>
   
           <Stack.Screen

@@ -16,7 +16,7 @@ export default class Login extends React.Component{
 
     login(email,password){
       firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
-        firebase.firestore().collection("Users").doc(email).get().then((doc)=>{
+        firebase.firestore().collection("Users").doc(email.toLowerCase()).get().then((doc)=>{
           if(doc.data().type==="patient"){
             this.props.navigation.replace("PatContainer")
           }

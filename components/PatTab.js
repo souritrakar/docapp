@@ -8,7 +8,10 @@ import PatHome from "../screens/patient/PatHome"
 import PatPrescriptions from "../screens/patient/PatPrescriptions"
 import PatApts from "../screens/patient/PatApts"
 import DoctorSearch from "../screens/DoctorSearch"
-const Tab= createBottomTabNavigator()
+import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
+
+
+const Tab= AnimatedTabBarNavigator();
 
 const PatTab=()=>{
     return(
@@ -33,9 +36,11 @@ const PatTab=()=>{
         },
     })}
     tabBarOptions={{
-        activeTintColor: 'red',
-        inactiveTintColor: 'gray',
-    }}>
+      activeTintColor: "#2F7C6E",
+      inactiveTintColor: "#222222",
+      floating:true
+    }}
+    >
         <Tab.Screen  name="Home" component={PatHome} />
       
         <Tab.Screen name="Prescriptions" component={PatPrescriptions}/>

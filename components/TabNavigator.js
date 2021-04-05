@@ -4,11 +4,17 @@ import React from "react"
 import DocHome from "../screens/doctor/DocHome"
 import DocApts from "../screens/doctor/DocApts"
 import DocPatients from "../screens/doctor/DocPatients"
-const Tab= createBottomTabNavigator()
+import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
+
+
+const Tab= AnimatedTabBarNavigator();
 
 const TabNavigator=()=>{
     return(
-    <Tab.Navigator screenOptions={({ route }) => ({
+    <Tab.Navigator
+ 
+
+    screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             if (route.name === 'Home') {
@@ -26,9 +32,12 @@ const TabNavigator=()=>{
         },
     })}
     tabBarOptions={{
-        activeTintColor: '#42C0FB',
-        inactiveTintColor: 'gray',
-    }}>
+      activeBackgroundColor:"black",
+      activeTintColor: "white",
+      inactiveTintColor: "#222222",
+      floating:true
+    }}
+    >
         <Tab.Screen  name="Home" component={DocHome} />
       
         <Tab.Screen name="Appointments" component={DocApts}/>

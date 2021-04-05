@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet,Dimensions,Image,Platform,SafeAreaView,ScrollView,Animated } from 'react-native';
+import { Text, View, StyleSheet,Dimensions,Image,Platform,SafeAreaView,ScrollView,Animated,ActivityIndicator } from 'react-native';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import {LinearGradient} from "expo-linear-gradient"
@@ -18,6 +18,7 @@ export default class DocPatients extends React.Component{
         this.state={
 
             patients:[],
+            hasLoaded:false
             
         }
     }
@@ -31,7 +32,8 @@ export default class DocPatients extends React.Component{
               snapshot.forEach(doc=>{
                 pats.push(doc.data())
               })
-              this.setState({patients:pats})
+              this.setState({patients:pats,hasLoaded:true})
+            
           
             })
           }
@@ -48,48 +50,56 @@ export default class DocPatients extends React.Component{
 
     render(){
 
+      if(this.state.hasLoaded===false){
         return(
-            <ScrollView style={styles.container}> 
-      
-     
-            <Text style={styles.headerText}>My Patients</Text>
-            <Text>{'\n'}</Text>
-           
-
-            {
-                this.state.patients.map(pat=>{
-                 return(
-                   <View style={{width:Dimensions.get("window").width}}>
-                  <Card>
-                  <Card.Title numberOfLines={1} >Patient {pat.name}</Card.Title>
-                  <Card.Divider/>
-                  
-                    <Text numberOfLines={1} style={{marginBottom: 10}}>
-                      Address: Patient Address goes here
-                    </Text>
-
-                    <Text numberOfLines={1} style={{marginBottom: 10}}>
-                     Contact: Patient Contact goes here
-                    </Text>
-
-                    <Text numberOfLines={1} style={{marginBottom: 10}}>
-                      Patient Last Appointment
-                    </Text>
-
-                    <Button
-                      icon={<Icon name='person' color='#ffffff' />}
-                      buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-                      title='VIEW PROFILE' />
-               
-                </Card>
-                </View>
-                 )
-               })
-            }
-        
-           
-        </ScrollView>
+          <ActivityIndicator size={40} color="white" />
         )
+      }
+      else{
+        return(
+          <ScrollView style={styles.container}> 
+    
+   
+          <Text style={styles.headerText}>My Patients</Text>
+          <Text>{'\n'}</Text>
+         
+
+          {
+              this.state.patients.map(pat=>{
+               return(
+                 <View style={{width:Dimensions.get("window").width}}>
+                <Card>
+                <Card.Title numberOfLines={1} >Patient {pat.patientname}</Card.Title>
+                <Card.Divider/>
+                
+                  <Text numberOfLines={1} style={{marginBottom: 10}}>
+                    Address: Patient Address goes here
+                  </Text>
+
+                  <Text numberOfLines={1} style={{marginBottom: 10}}>
+                   Contact: Patient Contact goes here
+                  </Text>
+
+                  <Text numberOfLines={1} style={{marginBottom: 10}}>
+                    Patient Last Appointment
+                  </Text>
+
+                  <Button
+                    icon={<Icon name='person' color='#ffffff' />}
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                    title='VIEW PROFILE' />
+             
+              </Card>
+              </View>
+               )
+             })
+          }
+      
+         
+      </ScrollView>
+      )
+      }
+        
     }
 }
 

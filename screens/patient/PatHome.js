@@ -7,6 +7,8 @@ import WavyHeader from "../../components/WavyHeader"
 import { WebView } from 'react-native-webview'; 
 import firebase from "../../firebase"
 import { Button } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+
 
 export default class PatHome extends React.Component{
     constructor(props){
@@ -39,11 +41,8 @@ export default class PatHome extends React.Component{
      
         return(
           <View style={styles.container}>
-          <WavyHeader  customColor='lightblue'  customStyles={styles.svgCurve} />
-           <View style={styles.headerContainer}>
-        <Button title="add doctor" color="green" onPress={()=>{this.addDoctor}}/>
+          <Text style={styles.headerText}>Welcome, {this.state.cred.name}</Text>
 
-          </View>
             
             </View>
       
@@ -107,8 +106,7 @@ const styles = StyleSheet.create({
     headerText: {
       fontSize: Dimensions.get("window").width/8,
       fontWeight: 'bold',
-      // change the color property for better output
-      color: '#fff',
+      color: 'black',
       textAlign: 'center',
       marginTop: 35
     },
@@ -135,7 +133,7 @@ const styles = StyleSheet.create({
   
     },
     svgCurve: {
-      position: 'absolute',
+      
       width: Dimensions.get('window').width
     },
   

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View,Dimensions } from 'react-native';
+import { StyleSheet, Text, View,Dimensions,Button } from 'react-native';
 import {NavigationContainer} from "@react-navigation/native"
 import { createStackNavigator} from "@react-navigation/stack"
 import LandingScreen from "./screens/LandingScreen"
@@ -60,7 +60,7 @@ function MyStack(){
        name="DocContainer"
   
        component={DocContainer}
-       options={{title:'Home',headerLeft:null}}
+       options={{title:'Home',headerLeft:null, }}
 
        />
 

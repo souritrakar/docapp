@@ -3,7 +3,7 @@ import { SearchBar } from 'react-native-elements';
 import {Button, Text,View,ToastAndroid, Dimensions} from "react-native"
 import firebase from "../firebase"
 import { Card, ListItem, Button as CardButton, Icon } from 'react-native-elements'
-
+import DatePicker from 'react-native-datepicker'
 
 export default class DoctorSearch extends React.Component{
 
@@ -81,6 +81,31 @@ export default class DoctorSearch extends React.Component{
           />
           <Text style={{textAlign:"center",fontSize:Dimensions.get("window").width/8,fontWeight:"bold"}}>Doctors on HeartBeat:</Text>
   
+          <DatePicker
+        style={{width: 200}}
+        date={new Date()}
+        mode="date"
+        placeholder="select date"
+        format="YYYY-MM-DD"
+        minDate="2021-01-01"
+        maxDate="2021-12-31"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            left: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36
+          }
+          // ... You can check the source to find the other keys.
+        }}
+        onDateChange={(date) => {console.log(date)}}
+      />
+
           {
               this.state.doctors.map(doc=>{
                   

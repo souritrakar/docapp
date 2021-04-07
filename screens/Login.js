@@ -1,6 +1,7 @@
-import React from "react"
+ import React from "react"
 import {Text,View,Dimensions,StyleSheet,TextInput,TouchableOpacity,ScrollView} from "react-native"
-import parseErrorStack from "react-native/Libraries/Core/Devtools/parseErrorStack";
+
+
 import WavyHeader from '../components/WavyHeader';
 import firebase from "../firebase"
 
@@ -60,6 +61,7 @@ export default class Login extends React.Component{
               <Text style={styles.loginText}>LOGIN</Text>
              </TouchableOpacity>
             </View>
+        
         )
     }
 }
